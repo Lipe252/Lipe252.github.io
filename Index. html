@@ -1,0 +1,28 @@
+<!DOCTYPE   @@html
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>José Felipe de Lima Ferreira</h1>
+  <img src="imagemTeste.jpg">
+  
+<!--Parte de contato-->
+    <p>Meios de contato:</br>
+Email: <a href="https://criarmeulink.com.br/u/1762181096">Clique aqui</a> </br>
+Instagram: <a href="https://www.instagram.com/felipe_lima252?igsh=MTE3a2VtdzVrbjNpYQ==" >Clique aqui</a>
+</p>
+
+<!--Parte das formações-->
+    <P>Formação: </br>
+Atualmente, estou cursando Técnico Em Desenvolvimento de Sistemas, integrado só ensino médio, no Instituto Federal de Alagoas-IFAL </p>
+
+<!--Parte de habilidades-->
+   <p>Habilidades: </br>
+Uma ótima comunicação, fácil socialização e facilidade em resolução de problemas!
+  
+</p>
+</body>
+</html>
