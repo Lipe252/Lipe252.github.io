@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #geral {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 150px 150px;
+    }
+
+    .containerPraRetornar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .caixaDeTexto {
+        margin: top;
+        padding: 10px;
+    }
+
+    #botao {
+        background-color: blue;
+        width: 100px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .resultadoCaixa {
+    border: 1px solid black;
+    padding: 5px;
+    width: 150px;
+    min-height: 20px;
+    word-wrap: break-word;
+}
+    </style>
+
+</head>
+<body>
+
+<script>
+
+function separarNome() {
+    const nomeCompleto = document.getElementById("inputNome").value.trim();
+
+    if (nomeCompleto === "") return;
+
+    const partes = nomeCompleto.split(" ");
+
+    const primeiroNome = partes[0];
+    const sobrenome = partes.slice(1).join(" ");
+
+    document.getElementById("divResposta").textContent = primeiroNome;
+    document.getElementById("divSobrenome").textContent = sobrenome;
+}
+
+</script>
+
+<div id="geral">
+
+    <div class="containerPraDigitar">
+        <div class="caixaDeTexto">
+            <form>
+            <label>Nome Completo: </label>
+            <input type="text" id="inputNome">
+            </form>
+        </div> 
+    </div>
+
+    <div>
+        <button onclick="separarNome()" id="botao"> >> </button>
+    </div>
+
+    <div class="containerPraRetornar">
+        <div class="caixaDoTexto">
+            <p>Nome:</p>
+            <div id="divResposta" class="resultadoCaixa"></div>
+        </div>
+
+        <div class="caixaDoTexto">
+            <p>Sobrenome: </p>
+            <div id="divSobrenome" class="resultadoCaixa"></div>
+    </div>
+
+</div> 
+</body>
+</html>
