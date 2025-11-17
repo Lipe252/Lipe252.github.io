@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +15,10 @@
     <main>
         <section class="robotron">
             <img class="robo" src="img/robotron.png" alt="Robotron">
+            <div class="controle-cores">
+                <button id="cor-anterior"><<</button>
+                <button id="cor-proxima">>></button>
+            </div>
             <figcaption class="titulo">ROBOTRON <br>2000</figcaption>
         </section>
 
@@ -98,5 +101,29 @@
             </form>
         </section>
     </main>
+    <script>
+        const robotron = document.getElementById("robotron");
+        const cores = [
+        "img/robotron-azul.png",
+        "img/robotron-amarelo.png",
+        "img/robotron-vermelho.png",
+        "img/robotron-preto.png",
+        "img/robotron-vermelho.png",
+        "img/robotron-rosa.png"
+        ];
+    
+    let indice = 0;
+    
+    document.getElementById("cor-proxima").addEventListener("click", () => {
+        indice = (indice + 1) % cores.length;
+        robotron.src = cores[indice];
+    });
+    
+    document.getElementById("cor-anterior").addEventListener("click", () => {
+        indice = (indice - 1 + cores.length) % cores.length;
+        robotron.src = cores[indice];
+    });
+
+    </script>
 </body>
 </html>
