@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #blocoGeral{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 150px 150px;
+            padding: 50px;
+            border: 1px solid black;
+        }
+
+        .containerDois {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        #texto {
+            border: 1px solid black;
+            padding: 10px;
+            width: 200px;
+            min-height: 40px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="blocoGeral">
+        <div>
+            <label>Digite seu nome: </label>
+            <input type="text" id="nome"><br>
+            <label>Digite sua altura: </label>
+            <input type="text" id="altura"><br>
+            <label>Digite seu peso: </label>
+            <input type="text" id="peso"><br>
+        </div>
+
+        <div class="containerDois">
+            <div>
+                <button onclick="calcularIMC()" id="botao"> Calcular IMC </button>
+            </div>
+            <div id="texto"></div>
+        </div>
+    </div>
+
+    <script>
+        function calcularIMC() {
+            const nome = document.getElementById("nome").value.trim();
+            const altura = parseFloat(document.getElementById("altura").value);
+            const peso = parseFloat(document.getElementById("peso").value);
+
+            if (nome === "" || isNaN(altura) || isNaN(peso)) {
+                document.getElementById("texto").textContent = "Preencha todos os campos corretamente.";
+                return;
+            }
+
+            const imc = peso / (altura * altura);
+            const imcFormatado = imc.toFixed(2);
+
+            document.getElementById("texto").textContent = `${nome}, seu IMC é: ${imcFormatado}`;
+        }
+    </script>
+
+</body>
+</html>
