@@ -1,129 +1,72 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
-    <title>Robotron 2000</title>
+    <title>Document</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet"> 
+    <style>
+        #container {
+            width: 400px;
+            margin: 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #container img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #000;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <section class="robotron">
-            <img class="robo" src="robotron.png" alt="Robotron">
-            <div class="controle-cores">
-                <button id="cor-anterior"><<</button>
-                <button id="cor-proxima">>></button>
-            </div>
-            <figcaption class="titulo">ROBOTRON <br>2000</figcaption>
-        </section>
 
-        <section class="box estatisticas">
-            <div class="estatistica">
-                <p class="estatistica-titulo">Força</p>
-                <div class="estatistica-valor">
-                    <p class="estatistica-numero">768</p>
-                </div>
-            </div>
-            <div class="estatistica">
-                <p class="estatistica-titulo">Poder</p>
-                <div class="estatistica-valor">
-                    <p class="estatistica-numero">630</p>
-                </div>
-            </div>
-            <div class="estatistica">
-                <p class="estatistica-titulo">Energia</p>
-                <div class="estatistica-valor">
-                    <p class="estatistica-numero">289</p>
-                </div>
-            </div>
-            <div class="estatistica">
-                <p class="estatistica-titulo">Velocidade</p>
-                <div class="estatistica-valor">
-                    <p class="estatistica-numero">597</p>
-                </div>
-            </div>
-        </section>
+    <div id="container">
+        <button onclick="voltar()">⟨</button>
 
-        <section class="equipamentos">
-            <form action="" class="montador">
-                <div class="box montador-conteudo">
-                    <div class="peca">
-                        <label for="" class="peca-titulo">Braços</label>
-                        <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
-                        </div>
-                    </div>
-                    <hr class="linha">
-                    <div class="peca">
-                        <label for="" class="peca-titulo">Blindagem</label>
-                        <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
-                        </div>
-                    </div>
-                    <hr class="linha">
-                    <div class="peca">
-                        <label for="" class="peca-titulo">Núcleos</label>
-                        <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
-                        </div>
-                    </div>
-                    <hr class="linha">
-                    <div class="peca">
-                        <label for="" class="peca-titulo">Pernas</label>
-                        <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
-                        </div>
-                    </div>
-                    <hr class="linha">
-                    <div class="peca">
-                        <label for="" class="peca-titulo">Foguetes</label>
-                        <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
-                        </div>
-                    </div>
-                </div>
-                <input type="submit" value="Iniciar produção" class="producao" id="producao">
-            </form>
-        </section>
-    </main>
+        <img id="foto" src="" alt="Imagem">
+
+        <button onclick="avancar()">⟩</button>
+    </div>
+
     <script>
-        const robotron = document.getElementById("robotron");
-        const cores = [
-        "robotron-azul.png",
-        "robotron-amarelo.png",
-        "robotron-vermelho.png",
-        "robotron-preto.png",
-        "robotron-vermelho.png",
-        "robotron-rosa.png"
+        const imagens = [
+            "robotron-vermelho.png",
+            "robotron-azul.png",
+            "robotron-branco.png",
+            "robotron-amrelo.png",
+            "robotron-preto.png"
         ];
-    
-    let indice = 0;
-    
-    document.getElementById("cor-proxima").addEventListener("click", () => {
-        indice = (indice + 1) % cores.length;
-        robotron.src = cores[indice];
-    });
-    
-    document.getElementById("cor-anterior").addEventListener("click", () => {
-        indice = (indice - 1 + cores.length) % cores.length;
-        robotron.src = cores[indice];
-    });
 
+        let indice = 0;
+
+        document.getElementById("foto").src = imagens[indice];
+
+        function avancar() {
+            indice++;
+            if (indice >= imagens.length) indice = 0;
+
+            document.getElementById("foto").src = imagens[indice];
+        }
+
+        function voltar() {
+            indice--;
+            if (indice < 0) indice = imagens.length - 1;
+
+            document.getElementById("foto").src = imagens[indice];
+        }
     </script>
+
 </body>
 </html>
