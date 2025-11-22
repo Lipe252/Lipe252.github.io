@@ -9,7 +9,7 @@
 }
 
 body {
-    background: url(../img/fundo.jpg);
+    background: url(robotron/fundo.jpg);
     background-position: center center;
     background-size: cover cover;
     padding: 0;
@@ -30,7 +30,7 @@ main {
 }
 
 .robotron {
-    background: url(../img/estrutura.png) no-repeat;
+    background: url(robotron/estrutura.png) no-repeat;
     background-position: center center;
     margin: 0;
     flex-basis: 40%;
@@ -230,4 +230,29 @@ main {
         height: 80vh;
         margin: 10vh auto;
     }
+}
+.troca-cor-container {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+.btn-cor {
+    padding: 0.4em 1.2em;
+    font-size: 1.5em;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-cor:hover {
+    background: #fff;
+    color: #000;
 }
