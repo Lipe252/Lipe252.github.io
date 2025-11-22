@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/jpg" href="robotron/favicon.ico"/>
     <title>Robotron 2000</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="robotron/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet"> 
@@ -15,8 +15,12 @@
 <body>
     <main>
         <section class="robotron">
-            <img class="robo" src="img/robotron.png" alt="Robotron">
+            <img class="robo" src="robotron/robotron.png" alt="Robotron">
             <figcaption class="titulo">ROBOTRON <br>2000</figcaption>
+            <div class="troca-cor-container">
+                <button id="anterior" class="btn-cor">Anterior</button>
+                <button id="proximo" class="btn-cor">Próximo</button>
+            </div>
         </section>
 
         <section class="box estatisticas">
@@ -98,5 +102,30 @@
             </form>
         </section>
     </main>
+    <script>
+        const imagemRobo = document.querySelector(".robo");
+
+        const cores = [
+            "robotron-azul.png",
+            "robotron-vermelho.png",
+            "robotron-amarelo.png",
+            "robotron-preto.png"
+        ];
+
+        let indice = 0;
+
+        document.getElementById("proximo").addEventListener("click", () => {
+            indice++;
+            if (indice >= cores.length) indice = 0;
+            imagemRobo.src = `robotron/${cores[indice]}`;
+        });
+
+        document.getElementById("anterior").addEventListener("click", () => {
+            indice--;
+            if (indice < 0) indice = cores.length - 1;
+            imagemRobo.src = `robotron/${cores[indice]}`;
+        });
+    </script>
+
 </body>
 </html>
