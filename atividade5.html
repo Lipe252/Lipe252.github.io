@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Formulário de Pré-Matrícula</title>
+
+<style>
+    body {
+        font-family: "Times New Roman", serif;
+        background: #f2f2f2;
+    }
+
+    table {
+        width: 600px;
+        margin: 20px auto;
+        border-collapse: collapse;
+        border: 2px solid #000;
+        background: #fff;
+    }
+
+    td, th {
+        border: 1px solid #000;
+        padding: 6px;
+        vertical-align: top;
+        font-size: 16px;
+    }
+
+    h1, h2 {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    input[type="text"], input[type="email"], input[type="date"], select {
+        width: 98%;
+        padding: 3px;
+        border: 1px solid #000;
+        font-size: 15px;
+    }
+
+    button {
+        padding: 4px 10px;
+        border: 1px solid #000;
+        background: #eee;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    #msg {
+        text-align: center;
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 18px;
+    }
+</style>
+
+</head>
+<body>
+
+<form id="form">
+
+<table>
+    <tr>
+        <td colspan="2">
+            <h1>Escola Virtual</h1>
+            <h2>Formulário de Pré-Matrícula</h2>
+        </td>
+    </tr>
+
+    <tr><th colspan="2">Dados Pessoais</th></tr>
+
+    <tr>
+        <td>Nome do Aluno:</td>
+        <td><input type="text" id="aluno"></td>
+    </tr>
+
+    <tr>
+        <td>Nascimento:</td>
+        <td><input type="date" id="nascimento"></td>
+    </tr>
+
+    <tr>
+        <td>Nome da Mãe:</td>
+        <td><input type="text" id="mae"></td>
+    </tr>
+
+    <tr>
+        <td>Nome do Pai:</td>
+        <td><input type="text" id="pai"></td>
+    </tr>
+
+    <tr>
+        <td>Telefone:</td>
+        <td>
+            DDD: <input type="text" id="ddd" style="width:50px;"> 
+            Tel: <input type="text" id="tel" style="width:130px;">
+            Ramal: <input type="text" id="ramal" style="width:80px;">
+        </td>
+    </tr>
+
+    <tr>
+        <td>E-mail:</td>
+        <td><input type="email" id="email"></td>
+    </tr>
+
+    <tr><th colspan="2">Informações de Matrícula</th></tr>
+
+    <tr>
+        <td>Série:</td>
+        <td>
+            <select id="serie">
+                <option>Pré-Escolar</option>
+                <option>Fundamental I</option>
+                <option>Fundamental II</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Turno:</td>
+        <td>
+            <input type="radio" name="turno" value="manha"> Manhã
+            <input type="radio" name="turno" value="tarde"> Tarde
+        </td>
+    </tr>
+
+    <tr>
+        <td>Atividades Extracurriculares<br>(máx. 3):</td>
+        <td>
+            <input type="checkbox" class="extra" value="info"> Informática<br>
+            <input type="checkbox" class="extra" value="musica"> Música<br>
+            <input type="checkbox" class="extra" value="ballet"> Ballet<br>
+            <input type="checkbox" class="extra" value="pintura"> Pintura<br>
+            <input type="checkbox" class="extra" value="futebol"> Futebol<br>
+            <input type="checkbox" class="extra" value="judo"> Judô<br>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="center">
+            <button type="button" onclick="validar()">Enviar Formulário</button>
+            <button type="reset">Limpar Campos</button>
+        </td>
+    </tr>
+</table>
+
+</form>
+
+<div id="msg"></div>
+
+<script>
+function validar() {
+    let aluno = document.getElementById("aluno").value.trim();
+    let nascimento = document.getElementById("nascimento").value;
+    let mae = document.getElementById("mae").value.trim();
+    let pai = document.getElementById("pai").value.trim();
+    let ddd = document.getElementById("ddd").value.trim();
+    let tel = document.getElementById("tel").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let msg = document.getElementById("msg");
+
+    msg.innerHTML = "";
+    msg.style.color = "red";
+
+    if (!aluno || !nascimento || !mae || !pai || !ddd || !tel || !email) {
+        msg.innerHTML = "Erro: Preencha todos os campos obrigatórios.";
+        return;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+        msg.innerHTML = "Erro: E-mail inválido.";
+        return;
+    }
+
+    let dddsValidos = [
+        "11","12","13","14","15","16","17","18","19",
+        "21","22","24","27","28",
+        "31","32","33","34","35","37","38",
+        "41","42","43","44","45","46","47","48","49",
+        "51","53","54","55",
+        "61","62","63","64","65","66","67","68","69",
+        "71","73","74","75","77","79",
+        "81","82","83","84","85","86","87","88","89",
+        "91","92","93","94","95","96","97","98","99"
+    ];
+
+    if (!dddsValidos.includes(ddd)) {
+        msg.innerHTML = "Erro: DDD inválido.";
+        return;
+    }
+
+    let atividades = document.querySelectorAll(".extra:checked");
+    if (atividades.length > 3) {
+        msg.innerHTML = "Erro: Selecione no máximo 3 atividades.";
+        return;
+    }
+
+    msg.style.color = "green";
+    msg.innerHTML = "Cadastro realizado com sucesso!";
+}
+</script>
+
+</body>
+</html>
