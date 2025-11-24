@@ -18,8 +18,6 @@
     <main>
         <section class="robotron">
             <img class="robo" src="robotron.png" alt="Robotron">
-            <button id="btn-anterior" class="troca-cor"><</button>
-            <button id="btn-proximo" class="troca-cor">></button>
             <figcaption class="titulo">ROBOTRON <br>2000</figcaption>
         </section>
 
@@ -117,28 +115,6 @@
     </main>
 
 <script>
-    // Troca de cor do robô
-    const robo = document.querySelector(".robo");
-    const cores = [
-        "robotron.png",
-        "robotron-vermelho.png",
-        "robotron-branco.png",
-        "robotron-rosa.png",
-        "robotron-preto.png",
-        "robotron-amarelo.png",
-        "robotron-azul.png"
-    ];
-    let indice = 0;
-
-    document.getElementById("btn-anterior").onclick = () => {
-        indice = (indice - 1 + cores.length) % cores.length;
-        robo.src = cores[indice];
-    };
-
-    document.getElementById("btn-proximo").onclick = () => {
-        indice = (indice + 1) % cores.length;
-        robo.src = cores[indice];
-    };
 
     // Função dos botões + e - 
     const controles = document.querySelectorAll(".controle-ajuste");
