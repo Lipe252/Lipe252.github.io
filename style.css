@@ -231,3 +231,29 @@ main {
         margin: 10vh auto;
     }
 }
+.troca-cor {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: 2px solid white;
+    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#btn-anterior {
+    left: 5%;
+}
+
+#btn-proximo {
+    right: 5%;
+}
+
+.troca-cor:hover {
+    background: white;
+    color: black;
+}
