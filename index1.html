@@ -12,6 +12,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet"> 
 </head>
+    <script>
+    const robo = document.querySelector(".robo");
+    const cores = [
+        "img/robotron.png",
+        "img/robotron-rosa.png",
+        "img/robotron-preto.png",
+        "img/robotron-amarelo.png",
+        "img/robotron-azul.png"
+    ];
+    let indice = 0;
+
+    document.getElementById("btn-anterior").onclick = () => {
+        indice = (indice - 1 + cores.length) % cores.length;
+        robo.src = cores[indice];
+    };
+
+    document.getElementById("btn-proximo").onclick = () => {
+        indice = (indice + 1) % cores.length;
+        robo.src = cores[indice];
+    };
+</script>
 <body>
     <main>
         <section class="robotron">
