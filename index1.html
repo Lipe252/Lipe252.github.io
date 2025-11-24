@@ -12,28 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet"> 
 </head>
-    <script>
-    const robo = document.querySelector(".robo");
-    const cores = [
-        "img/robotron.png",
-        "img/robotron-rosa.png",
-        "img/robotron-preto.png",
-        "img/robotron-amarelo.png",
-        "img/robotron-azul.png"
-    ];
-    let indice = 0;
 
-    document.getElementById("btn-anterior").onclick = () => {
-        indice = (indice - 1 + cores.length) % cores.length;
-        robo.src = cores[indice];
-    };
-
-    document.getElementById("btn-proximo").onclick = () => {
-        indice = (indice + 1) % cores.length;
-        robo.src = cores[indice];
-    };
-</script>
 <body>
+
     <main>
         <section class="robotron">
             <img class="robo" src="robotron.png" alt="Robotron">
@@ -72,54 +53,114 @@
         <section class="equipamentos">
             <form action="" class="montador">
                 <div class="box montador-conteudo">
+
                     <div class="peca">
-                        <label for="" class="peca-titulo">Braços</label>
+                        <label class="peca-titulo">Braços</label>
                         <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
+                            <button type="button" class="controle-ajuste">-</button>
                             <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
+                            <button type="button" class="controle-ajuste">+</button>
                         </div>
                     </div>
+
                     <hr class="linha">
+
                     <div class="peca">
-                        <label for="" class="peca-titulo">Blindagem</label>
+                        <label class="peca-titulo">Blindagem</label>
                         <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
+                            <button type="button" class="controle-ajuste">-</button>
                             <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
+                            <button type="button" class="controle-ajuste">+</button>
                         </div>
                     </div>
+
                     <hr class="linha">
+
                     <div class="peca">
-                        <label for="" class="peca-titulo">Núcleos</label>
+                        <label class="peca-titulo">Núcleos</label>
                         <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
+                            <button type="button" class="controle-ajuste">-</button>
                             <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
+                            <button type="button" class="controle-ajuste">+</button>
                         </div>
                     </div>
+
                     <hr class="linha">
+
                     <div class="peca">
-                        <label for="" class="peca-titulo">Pernas</label>
+                        <label class="peca-titulo">Pernas</label>
                         <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
+                            <button type="button" class="controle-ajuste">-</button>
                             <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
+                            <button type="button" class="controle-ajuste">+</button>
                         </div>
                     </div>
+
                     <hr class="linha">
+
                     <div class="peca">
-                        <label for="" class="peca-titulo">Foguetes</label>
+                        <label class="peca-titulo">Foguetes</label>
                         <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
+                            <button type="button" class="controle-ajuste">-</button>
                             <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
+                            <button type="button" class="controle-ajuste">+</button>
                         </div>
                     </div>
+
                 </div>
+
                 <input type="submit" value="Iniciar produção" class="producao" id="producao">
+
             </form>
         </section>
+
     </main>
+
+<script>
+    // Troca de cor do robô
+    const robo = document.querySelector(".robo");
+    const cores = [
+        "robotron.png",
+        "robotron-vermelho.png",
+        "robotron-branco.png",
+        "robotron-rosa.png",
+        "robotron-preto.png",
+        "robotron-amarelo.png",
+        "robotron-azul.png"
+    ];
+    let indice = 0;
+
+    document.getElementById("btn-anterior").onclick = () => {
+        indice = (indice - 1 + cores.length) % cores.length;
+        robo.src = cores[indice];
+    };
+
+    document.getElementById("btn-proximo").onclick = () => {
+        indice = (indice + 1) % cores.length;
+        robo.src = cores[indice];
+    };
+
+    // Função dos botões + e - 
+    const controles = document.querySelectorAll(".controle-ajuste");
+
+    controles.forEach((controle) => {
+        controle.addEventListener("click", (evento) => {
+            const operacao = evento.target.textContent; // + ou -
+            const contador = evento.target.parentNode.querySelector(".controle-contador");
+
+            let valor = parseInt(contador.value);
+
+            if (operacao === "+" && valor < 10) {
+                valor++;
+            } else if (operacao === "-" && valor > 0) {
+                valor--;
+            }
+
+            contador.value = valor.toString().padStart(2, "0");
+        });
+    });
+
+</script>
+
 </body>
 </html>
