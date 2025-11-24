@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Atividade 06</title>
+<style>
+    body {
+        font-family: Arial;
+        margin: 20px;
+    }h2 {
+    margin-bottom: 10px;
+}
+
+.box {
+    width: 420px;
+    border: 1px solid #000;
+    padding: 15px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+}
+
+.btns button {
+    padding: 6px 12px;
+    margin-right: 6px;
+    margin-top: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #000;
+    padding: 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+#resumo {
+    border: 1px solid #000;
+    padding: 15px;
+    width: 300px;
+    margin-top: 30px;
+}
+
+</style>
+</head>
+<body>
+<h2>Extrato Bancário</h2>
+<div class="box">
+    <label>Categoria:</label>
+    <select id="categoria">
+        <option>Mercado</option>
+        <option>Transporte</option>
+        <option>Outros</option>
+    </select><label>Data:</label>
+<input type="date" id="data">
+
+<label>Valor:</label>
+<input type="number" id="valor" step="0.01">
+
+<div class="btns">
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="calcular()">Calcular</button>
+</div>
+
+<table id="tabela">
+    <tr>
+        <th>Categoria</th>
+        <th>Data</th>
+        <th>Valor</th>
+    </tr>
+</table>
+
+</div><div id="resumo"></div>
+  <script>
+    function adicionar() {
+        let cat = document.getElementById('categoria').value;
+        let data = document.getElementById('data').value;
+        let valor = document.getElementById('valor').value;
+
+        if (!data || !valor) {
+            alert("Preencha todos os campos.");
+            return;
+        }
+
+        let tabela = document.getElementById('tabela');
+        let linha = tabela.insertRow();
+
+        linha.insertCell(0).innerHTML = cat;
+        linha.insertCell(1).innerHTML = data;
+        linha.insertCell(2).innerHTML = parseFloat(valor).toFixed(2);
+    }
+
+    function calcular() {
+        let linhas = document.querySelectorAll('#tabela tr');
+        let total = 0;
+        let totalMes = 0;
+        let totalMercado = 0;
+
+        let mesAtual = new Date().getMonth() + 1;
+
+        linhas.forEach((linha, index) => {
+            if (index === 0) return;
+
+            let categoria = linha.cells[0].innerHTML;
+            let data = linha.cells[1].innerHTML;
+            let valor = parseFloat(linha.cells[2].innerHTML);
+
+            total += valor;
+
+            let mes = parseInt(data.split('-')[1]);
+            if (mes === mesAtual) totalMes += valor;
+            if (categoria === "Mercado") totalMercado += valor;
+        });
+
+        document.getElementById('resumo').innerHTML = `
+            <h3>Resumo</h3>
+            Total: ${total.toFixed(2)}<br>
+            Total no mês atual: ${totalMes.toFixed(2)}<br>
+            Total de gastos com Mercado: ${totalMercado.toFixed(2)}
+        `;
+    }
+</script>
+</body>
+</html>
